@@ -35,7 +35,7 @@ public:
   CDnsSeedOpts() : nThreads(96), nDnsThreads(4), nPort(53), mbox(NULL), ns(NULL), host(NULL), tor(NULL), fDaemon(false), fUseTestNet(false), fWipeBan(false), fWipeIgnore(false), ipv4_proxy(NULL), ipv6_proxy(NULL) {}
 
   void ParseCommandLine(int argc, char **argv) {
-    static const char *help = "BlackCoin-seeder\n"
+    static const char *help = "vericoin-seeder\n"
                               "Usage: %s -h <host> -n <ns> [-m <mbox>] [-t <threads>] [-p <port>]\n"
                               "\n"
                               "Options:\n"
@@ -357,16 +357,13 @@ extern "C" void* ThreadStats(void*) {
   } while(1);
 }
 
-static const string mainnet_seeds[] = {"dnsseed.vasin.nl", "dnsseed.joshuajbouw.com", ""};
+static const string mainnet_seeds[] = {"dnsseed-vericoin", "dnsseed.vericoin.info", ""};
 static const string testnet_seeds[] = {""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("69.30.221.82", 19001, false), true);
-    db.Add(CService("2607:fea8:3ca0:926::2", 15714, false), true);
-    db.Add(CService("54ktu5wby3agev2d.onion", 15714), true);
-    db.Add(CService("pqlf5ov3xzkqj3lt.onion", 15714), true);
+    db.Add(CService("104.131.18.228", 58684, true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
